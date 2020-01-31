@@ -5,8 +5,12 @@ import SearchForm from './SearchForm';
 
 export default function CharacterList() {
   const [data, setData ]= useState([]);
+  const [updateData, setUpdateData] = useState([])
   // const [query, setQuery] = useState('');
   // TODO: Add useState to track data from useEffect
+  const searchHandlerFunction = e =>{
+    setUpdateData(e);
+  }
 
   useEffect(() => {
     // TODO: Add API Request here - must run in `useEffect`
@@ -16,6 +20,7 @@ export default function CharacterList() {
     .get(`https://rickandmortyapi.com/api/character/`)
     .then(response => {
       setData(response.data.results)
+      setUpdateData(response.data.results);
       console.log('response => ', response.data);
      
       // setData(characters);
@@ -27,7 +32,7 @@ export default function CharacterList() {
 
   return (
     <section className="character-list">
-      <SearchForm data={data} setData={setData} />
+      <SearchForm data={data} setData={setData} search={searchHandlerFunction} />
       <h2>TODO: `array.map()` over your state here!</h2>
       {console.log('data ===>', data)}
       {console.log('data map', data.map(item=> {return (<div>{item.name}</div>)}))}
