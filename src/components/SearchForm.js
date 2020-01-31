@@ -1,27 +1,34 @@
 import React, { useState, useEffect } from "react";
 import axios from 'axios'
+import styled from 'styled-components'
 import {
   Route,Link, Switch
 } from "react-router-dom";
 import CharacterCard from './CharacterCard'
 
 export default function SearchForm(props) {
+  const Card = styled.div` 
+  display: flex;
+//  flex-direction: column;
+justify-content: center;
+text-align: center;
+`
+const Header = styled.h1`
+  color: tomato;
+  text-align: center;
+`
+const Header3 = styled.h3`
+  color: palevioletred
+`
+
+ const Info = styled.div`
+ //  border: 1px solid tomato;
+`
+
+
 const [data, setData]= useState([]);
   const [query, setQuery] = useState('');
 
-  const handleChanges = e => {
-    setQuery(e.target.value);
-  }
-
-  // const submitHandler = e =>{
-  //   e.preventDefault();
-  //   const searchChar = props.characters.filter(char => {
-  //     console.log('charlower-->', char.name.toLowerCase().indexOf(query.toLowerCase()) !== -1)
-  //     // return (char.name.toLowerCase().indexOf(query.toLowerCase()) !== -1)
-  //    });
-  //    props.search(searchChar);
-  //    console.log(searchChar)
-  // }
 
   useEffect(() => {
     // TODO: Add API Request here - must run in `useEffect`
@@ -33,10 +40,6 @@ const [data, setData]= useState([]);
       const characters=
       response.data.results.filter(character => character.name.toLowerCase().includes(query.toLowerCase()))
       setData(characters);
-      // setUpdateData(response.data.results);
-      // console.log('response => ', response.data);
-     
-      // setData(characters);
     })
     .catch(err => console.log('the data was not returned', err))
   }, [query]);
@@ -71,4 +74,7 @@ const [data, setData]= useState([]);
   ))}
     </section>
   );
+
+
+  
 }
