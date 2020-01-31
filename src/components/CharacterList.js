@@ -24,9 +24,9 @@ export default function CharacterList() {
       <h2>TODO: `array.map()` over your state here!</h2>
       {console.log('data ===>', data)}
       {console.log('data map', data.map(item=> {return (<div>{item.name}</div>)}))}
-      {data.map(item=> {return (<div>{item.name}</div>)})}
+      {/* {data.map(item=> {return (<div>{item.name}</div>)})} */}
       {/* {console.log('data map===>', data.map())} */}
-      {/* {data.map(chars=> <CharacterCard chars={chars} key={chars.id} />)} */}
+      {data.map(chars=> <CharacterCard chars={chars} key={chars.id} />)}
 {/* {      data.results.map(chars=> console.log('charsiee', chars))}     */}
 
 </section>
