@@ -25,7 +25,8 @@ In this challenge, you will create a Single Page Application complete with Clien
 
 Demonstrate your understanding of this Sprint's concepts by answering the following free-form questions. Edit this document to include your answers after each question.
 
-- [ ]  Explain benefit(s) using `client-side routing`?
+#### Explain benefit(s) using `client-side routing`?
+-  Client side routing- you're not seeing a flash-- first time page loads one time, creates empty div and react takes over. and then load/updates in component used at a time. It is alot faster. This is mostly done with the `<component>` tag
 
 > Answer:
 
