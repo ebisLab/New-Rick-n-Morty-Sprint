@@ -1,9 +1,11 @@
 import React, { useEffect, useState } from "react";
 import axios from 'axios';
 import CharacterCard from './CharacterCard';
+import SearchForm from './SearchForm';
 
 export default function CharacterList() {
   const [data, setData ]= useState([]);
+  // const [query, setQuery] = useState('');
   // TODO: Add useState to track data from useEffect
 
   useEffect(() => {
@@ -15,19 +17,23 @@ export default function CharacterList() {
     .then(response => {
       setData(response.data.results)
       console.log('response => ', response.data);
+     
+      // setData(characters);
     })
     .catch(err => console.log('the data was not returned', err))
   }, []);
 
+
+
   return (
     <section className="character-list">
+      <SearchForm data={data} setData={setData} />
       <h2>TODO: `array.map()` over your state here!</h2>
       {console.log('data ===>', data)}
       {console.log('data map', data.map(item=> {return (<div>{item.name}</div>)}))}
       {/* {data.map(item=> {return (<div>{item.name}</div>)})} */}
       {/* {console.log('data map===>', data.map())} */}
       {data.map(chars=> <CharacterCard chars={chars} key={chars.id} />)}
-{/* {      data.results.map(chars=> console.log('charsiee', chars))}     */}
 
 </section>
   );

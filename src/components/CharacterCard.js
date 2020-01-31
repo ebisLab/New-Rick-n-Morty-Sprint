@@ -9,8 +9,6 @@ export default function CharacterCard(props) {
     <img src={props.chars.image}/>
     <p>{props.chars.status}</p>
     <p>{props.chars.species}</p>
-
-  <span>todo: character</span>
   </div>
   )
 }
